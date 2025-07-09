@@ -1,52 +1,58 @@
-<template>
-  <div class="login">
-    <h2>Login</h2>
-    <form @submit.prevent="login">
-      <div>
-        <label>Email:</label>
-        <input v-model="email" type="email" required />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input v-model="password" type="password" required />
-      </div>
-      <button type="submit">Login</button>
-    </form>
-
-    <p v-if="error" style="color: red">{{ error }}</p>
-  </div>
-</template>
-
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import {useAuthStore} from "@/stores/auth.js";
+import {ref} from 'vue'
+import LoginForm from '@/components/forms/auth/LoginForm.vue'
+import RegisterForm from '@/components/forms/auth/RegisterForm.vue'
+import SectionCenteredBox from "@/components/base/layout/sections/SectionBox.vue";
 
-const email = ref('')
-const password = ref('')
-const error = ref(null)
-const router = useRouter()
-const auth = useAuthStore()
+const showLogin = ref(true)
 
-async function login() {
-  error.value = null
-  try {
-    const res = await fetch('/api/login_check', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email.value, password: password.value }),
-    })
-
-    const data = await res.json()
-
-    if (!res.ok) {
-      throw new Error(data.message || 'Invalid credentials')
-    }
-
-    auth.login(data.token);
-    router.push('/dashboard') // Or wherever you want to go after login
-  } catch (err) {
-    error.value = err.message
-  }
+function toggleForm() {
+  showLogin.value = !showLogin.value
 }
 </script>
+
+<template>
+  <SectionCenteredBox class="full-page">
+    <h2 class="form-title">{{ showLogin ? 'Sign In' : 'Sign Up' }}</h2>
+    <LoginForm v-if="showLogin"/>
+    <RegisterForm v-else/>
+
+    <div class="form-toggle">
+        <span v-if="showLogin">
+          Don't have an account?
+          <a @click.prevent="toggleForm" href="#">Sign Up</a>
+        </span>
+      <span v-else>
+          Already have an account?
+          <a @click.prevent="toggleForm" href="#">Sign In</a>
+        </span>
+    </div>
+  </SectionCenteredBox>
+</template>
+
+<style scoped lang="scss">
+.form-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: $text-dark;
+}
+
+.form-toggle {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: $text-light;
+
+  a {
+    color: $color-primary;
+    margin-left: 0.25rem;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+</style>

@@ -1,0 +1,4 @@
+auth:
+  register: # Login messages are handled by JWT
+    missing_fields: "Missing required fields"
+    success: "User registered successfully"
