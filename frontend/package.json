@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && npm run move-files",
+    "build:dev": "vite build --mode development && npm run move-files",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
@@ -14,9 +15,16 @@
     "move-files": "node scripts/move-files.js"
   },
   "dependencies": {
+    "axios": "^1.10.0",
+    "date-fns": "^4.1.0",
+    "lucide-vue-next": "^0.525.0",
+    "naive-ui": "^2.42.0",
     "pinia": "^3.0.3",
+    "vee-validate": "^4.15.1",
     "vue": "^3.5.17",
-    "vue-router": "^4.5.1"
+    "vue-i18n": "^11.1.9",
+    "vue-router": "^4.5.1",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
@@ -32,7 +40,8 @@
     "globals": "^16.2.0",
     "jsdom": "^26.1.0",
     "prettier": "3.5.3",
-    "vite": "^7.0.0",
+    "sass-embedded": "^1.89.2",
+    "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^7.7.7",
     "vitest": "^3.2.4"
   }

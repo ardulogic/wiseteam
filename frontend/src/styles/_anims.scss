@@ -1,0 +1,21 @@
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave-from {
+  max-height: 100px; // adjust as needed
+  opacity: 1;
+  margin-top: 1rem;
+}

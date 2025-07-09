@@ -1,0 +1,6 @@
+auth:
+  register:
+    email_exists: 'This email address is already registered.'
+book:
+  isbn:
+    unique: "ISBN already exists!"

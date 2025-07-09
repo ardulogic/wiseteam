@@ -10,9 +10,8 @@ export const useAuthStore = defineStore('auth', {
     isAuthenticated: (state) => !!state.token,
   },
   actions: {
-    login(token, user = null) {
+    login(token) {
       this.token = token
-      this.user = user
       localStorage.setItem('token', token)
     },
     logout() {

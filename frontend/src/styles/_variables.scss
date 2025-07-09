@@ -1,0 +1,23 @@
+@use "sass:color";
+
+$color-primary: #007BFF;
+$color-primary-darken: color.adjust($color-primary, $lightness: -10%);
+$color-primary-lighten: color.adjust($color-primary, $lightness: 10%);
+
+$color-error: #c00;
+$color-error-light: #ef4444;
+$color-success: #0fa12d;
+$color-success-light: #10b981;
+
+$color-border: #d1d5db;
+
+$color-text: #333;
+$color-text-muted: #555;
+$bg-white: #fff;
+$bg-light: #f9fafb;
+$text-dark: #111827;
+$text-light: #6b7280;
+$border-color: #e0e0e0;
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+$height-header: 40px;
