@@ -71,7 +71,7 @@ const fetchData = async () => {
 }
 
 const deleteItem = (item) => {
-  const {title, content} = rDialogs.value.delete(item)
+  const {title, content} = rDialogs.delete(item)
   dialog.warning({
     title,
     content,
